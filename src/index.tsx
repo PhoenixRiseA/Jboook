@@ -34,11 +34,6 @@ const App = () =>{
     });
     // console.log(result);
     setCode(result.outputFiles[0].text);
-    try{
-      eval(result.outputFiles[0].text);
-    }catch (err){
-      alert(err)
-    }
     
   };
 
@@ -46,15 +41,20 @@ const App = () =>{
     startService();
   },[]);
 
+  const html = `
+  <script>${code}</script>
+`;
+
   return <div>
     <textarea value={input} onChange={e=>setInput(e.target.value)}></textarea>
     <div>
       <button onClick={onClick}>Submit</button>
     </div>
     <pre>{code}</pre>
-    <iframe src="/test.html"></iframe>
+    <iframe sandbox="allow-scripts" srcDoc={html}></iframe>
   </div>;
 };
+
 const container = document.querySelector('#root');
 const root = createRoot(container!);
 root.render(
