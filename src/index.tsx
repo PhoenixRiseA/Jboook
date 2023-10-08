@@ -4,6 +4,7 @@ import * as esbuild from 'esbuild-wasm';
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import {createRoot} from 'react-dom/client'
 import { fetchPlugin } from "./plugins/fetch-plugin";
+import CodeEditor from "./components/code-editor";
 const App = () =>{
   const [input, setInput] = useState('');
   
@@ -64,6 +65,7 @@ const App = () =>{
 `;
 
   return <div>
+    <CodeEditor/>
     <textarea value={input} onChange={e=>setInput(e.target.value)}></textarea>
     <div>
       <button onClick={onClick}>Submit</button>
