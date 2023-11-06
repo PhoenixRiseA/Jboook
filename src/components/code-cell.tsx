@@ -3,7 +3,8 @@ import { useState} from "react";
 import CodeEditor from "./code-editor";
 import Preview from "./preview";
 import bundle from '../bundler';
-
+import Resizable from "./resizable";
+import './resizable.css'
 const CodeCell = () =>{
   const [input, setInput] = useState('');
   const [code, setCode] = useState('');
@@ -15,14 +16,14 @@ const CodeCell = () =>{
   };
  
 
-  return <div>
+  return <Resizable direction="vertical">
+    <div style={{height:'100%', display:'flex', flexDirection:'row'}}>
     <CodeEditor onChange={(value)=>setInput(value)} initialValue={input}/>
-    <div>
-      <button onClick={onClick}>Submit</button>
-    </div>
-      <Preview code={code}  />
+  
+    <Preview code={code}  />
 
-  </div>;
+  </div>
+  </Resizable>;
 };
 
 export default CodeCell; 
