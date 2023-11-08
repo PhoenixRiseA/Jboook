@@ -32,7 +32,11 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
 
   useEffect(() => {
     iframe.current.srcdoc = html;
-    iframe.current.contentWindow.postMessage(code, '*');
+    setTimeout(()=>{
+      iframe.current.contentWindow.postMessage(code, '*'); // so that the editor has enough time to listen to this message after giving it the code
+    }
+    ,50)
+    
   }, [code]);
 
   return (
