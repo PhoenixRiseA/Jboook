@@ -1,7 +1,7 @@
 .editor-wrapper {
   position: relative;
   height: 100%;
-  width: calc(100% - 10px); /* needed so that handle doesn't get hidden when resizing */
+  width: calc(100% - 10px);
 }
 
 .editor-wrapper .button-format {
