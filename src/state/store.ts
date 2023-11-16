@@ -37,4 +37,3 @@ store.dispatch({
   }
 
 })
-console.log(store.getState())
